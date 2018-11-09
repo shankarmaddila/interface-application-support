@@ -1,0 +1,182 @@
+
+
+$promotionHeight: 45vh
+
+.promotion
+  // display: none
+  height: 0
+  background: $text-dark-blue
+  // background: $gradientBackground
+  margin-bottom: 0
+  overflow: hidden
+  // +opacity(0)
+  +transition(height, 0.30s)
+  +transition-timing-function(cubic-bezier(.32, 1, .53, .8))
+  // +transition-timing-function(ease-in-out)
+
+  // [ ease | linear | ease-in | ease-out | ease-in-out | cubic-bezier(.32, 1, .53, .8)]
+
+  &.un-subscribed
+    // +opacity(1)
+    // height: auto
+    // display: block
+
+  // alert reset
+  padding: 0
+  border: 0
+
+  p:last-of-type
+    margin-bottom: 0
+
+  .about-view
+    max-width: 500px
+    color: #fff
+
+  .action-view
+    color: #fff
+
+  .close
+    width: rem-calc(40px)
+    height: rem-calc(40px)
+    top: rem-calc(20px)
+    right: rem-calc(20px)
+    font-weight: normal
+    font-size: 2.5rem
+    color: #fff
+    text-align: center
+    line-height: rem-calc(32px)
+    z-index: 1
+
+    &:hover
+      opacity: 1
+
+  a.tel
+    border-bottom: 1px solid #fff
+    text-decoration: none
+    color: inherit
+
+  form .submit
+    margin: 0
+    padding: 0
+    color: #fff
+    font-size: rem-calc(12px)
+    font-weight: 500
+    border-color: $text-red
+    background-color: $text-red
+
+  form input
+    font-size: 12px
+    margin-bottom: 0
+    color: #444
+
+  form#subscribe small.error
+    padding: 8px
+    background: rgba(#000, 0.5)
+
+
+  p, a, h1, h4, input, small
+    color: inherit
+
+  .panel
+    background-color: $text-dark-blue
+    color: #fff
+
+
+  // promotion_verticalCenter
+  // .about-view, .action-view
+  //   position: absolute
+  //   top: 50%
+  //   +transform(translateY(-50%))
+
+
+
+.about, .action
+  padding: 0 $column-gutter
+  margin: $column-gutter 0
+
+.about
+  position: relative
+  width: 100%
+
+  .title
+    display: none
+
+.action
+  position: relative
+  width: 100%
+
+@media #{$small-up-portrait}
+
+@media #{$small-up-landscape}
+  .promotion.un-subscribed
+    height: 50vh
+
+  .about .title
+    display: none
+
+  .about-view, .action-view
+    position: absolute
+    top: 50%
+    +transform(translateY(-50%))
+
+  .about, .action
+    height: 50vh
+    padding: 0
+    margin: 0
+
+  .about
+    +grid-column($columns: 6, $last_column: false, $collapse: false)
+
+  .action
+    +grid-column($columns: 4, $last_column: true, $collapse: false)
+
+
+@media #{$med-up-portrait}
+  .promotion.un-subscribed
+    height: 35vh
+
+  .about .title
+    display: block
+
+  .about-view, .action-view
+    position: absolute
+    top: 50%
+    +transform(translateY(-50%))
+
+  .about, .action
+    height: 35vh
+    padding: 0
+    margin: 0
+
+  .about
+    +grid-column($columns: 6, $last_column: false, $collapse: false)
+    padding-left: $column-gutter
+
+  .action
+    +grid-column($columns: 4, $last_column: true, $collapse: false)
+    padding-right: $column-gutter
+
+
+@media #{$med-up-landscape}
+  .promotion.un-subscribed
+    height: $promotionHeight
+
+  .about .title
+    display: block
+
+  .about-view, .action-view
+    position: absolute
+    top: 50%
+    +transform(translateY(-50%))
+
+  .about, .action
+    height: $promotionHeight
+    padding: 0
+    margin: 0
+
+  .about
+    +grid-column($columns: 6, $last_column: false, $collapse: false)
+
+  .action
+    +grid-column($columns: 4, $last_column: true, $collapse: false)
+

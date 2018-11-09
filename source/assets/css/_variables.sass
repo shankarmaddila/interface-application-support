@@ -1,0 +1,73 @@
+
+// Colors
+
+$brand-grey-dark: #4d442e
+$brand-grey-light: #a6a197
+
+$bg: #f9f9f9
+$bg-alt: #edecea
+
+$text: $brand-grey-dark
+$text-hover: scale-color($brand-grey-dark, $lightness: 20%)
+
+$text-alt: $brand-grey-light
+$text-alt-hover: scale-color($text-alt, $lightness: -20%)
+
+$text-tan: #cea36d
+$text-orange: #fd9a2b
+$text-pink: #ff7775
+$text-red: #ec5a4f
+$text-dark-green: #8d875d
+$text-light-green: #b4cbc0
+$text-dark-blue: #616579
+$text-light-blue: #65a4bf
+
+$vibrantGreen: #6eac10
+
+$link: #34b5d0
+$link-hover: $link + #111
+$link-active : $link + #222
+
+$border: #ddd
+
+$placeholder-grey: $bg-alt
+
+// Type
+$font-stack: "Helvetica Neue LT", "Helvetica Neue", Helvetica, Arial, sans-serif
+$font-stack-ui: 'Roboto', sans-serif
+$font-default-size: 12px
+$fs: $font-default-size
+
+
+// plugins
+@mixin font-smoothing($value: antialiased)
+  @if $value == antialiased
+    -webkit-font-smoothing: antialiased
+    -moz-osx-font-smoothing: grayscale
+  @else
+    -webkit-font-smoothing: subpixel-antialiased
+    -moz-osx-font-smoothing: auto
+
+
+// background: linear-gradient(rgba(#fff, 1) 0%, rgba(#F2F2F2, 1) 150%)
+// +grid-column($columns: 12, $last_column: true, $collapse: true)
+// +block-grid($per_row: 1, $spacing: 0, $base_style: true)
+
+$uiDropShadow: 0px 6px 5px -5px rgba(#000, 0.3)
+
+$step1: rgba(#000, 0)
+$step2: rgba(#000, 0.15)
+$step3: rgba(#000, 0.25)
+
+$scrimBackground: linear-gradient($step1 40%, $step2 80%, $step3 100%)
+
+$step1M: rgba(#000, 0.25)
+$step2M: rgba(#000, 0.55)
+$step3M: rgba(#000, 0.85)
+
+$scrimBackgroundMobile: linear-gradient($step1M 40%, $step2M 80%, $step3M 100%)
+
+$step1: $text-dark-blue
+$step2: $text-light-blue
+
+$gradientBackground: linear-gradient(30deg, $step1 10%, $step2 110%)

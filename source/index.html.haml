@@ -1,0 +1,43 @@
+---
+title: Interface Specials
+imgGridLarge: '300'
+imgGridMedium3x: '262'
+imgGridMedium2x: '358'
+imgGridSmall2x: '139'
+imgGridSmall3x: '169'
+---
+
+// config &wid=318&hei=318&align=-1,0&fit=crop
+// scene &wid=318&hei=318
+// tile ?wid=318&hei=318&align=-1,0&fit=crop
+
+-# - content_for :page_javascript do
+
+- content_for :page_modals do
+  = partial 'partials/modals/product-interstitial'
+  = partial 'partials/modals/product-order-success'
+  = partial 'partials/modals/welcome-radstock'
+
+- content_for :page_templates do
+  = partial 'partials/templates/product-grid-colors'
+  = partial 'partials/templates/product-grid'
+  = partial 'partials/templates/modal-header'
+  = partial 'partials/templates/modal-form-backend-data'
+  = partial 'partials/templates/modal-form-dyelots'
+
+
+-# %section.layout-full.page-hero{'data-equalizer'=>'', 'data-equalizer-mq'=>"medium-up"}
+%section.layout-full.page-hero.promotion.alert-box{"data-alert" => ""}
+  = partial 'partials/html-components/promotion'
+
+#productGridTop
+  = partial 'partials/html-components/loader'
+
+%section.layout-default.row.product-offers
+
+  -# product filtering toolbar
+  = partial 'partials/html-components/product-toolbar'
+
+  .content.columns.large-12
+    -# script#product-grid here
+    %ul#productScroll.row.content-index.product-grid.view-scene

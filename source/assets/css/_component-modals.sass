@@ -1,0 +1,600 @@
+
+.touch .header-product .call
+  text-decoration: underline
+
+
+.active-modal body
+  width: 100%
+  height: 100vh
+  overflow: hidden
+
+// all modals
+.reveal-modal
+  padding: rem-calc(40px)
+  position: fixed !important
+  top: 0 !important
+
+  .view-container
+    height: inherit
+    max-height: 100vh
+    max-width: 1280px
+    margin: 0 auto
+    background-color: #fff
+    // overflow: scroll
+    position: relative
+
+    @media #{$large-up}
+      .tabs-content
+        margin-bottom: 0
+
+  .close-reveal-modal
+    width: rem-calc(40px)
+    height: rem-calc(40px)
+    // top: rem-calc(5px)
+    // right: rem-calc(5px)
+    top: 0
+    right: rem-calc(-40px)
+    font-weight: normal
+    color: #fff
+    text-align: center
+    line-height: rem-calc(32px)
+    z-index: 1
+    position: absolute
+
+    &:hover
+      border-color: #888
+
+.modal-header
+  padding: 0
+  background-color: #eee
+  z-index: 2
+  +box-shadow(0px 0px 14px 3px rgba(#000, 0.2))
+
+  @media #{$medium-up}
+    height: 100%
+
+.modal-content
+  padding: 0
+
+// product interstitial header
+.product-data, .product-help
+  padding: 20px 0
+
+
+.header-product
+  color: #444
+
+  +pie-clearfix
+
+  img
+    width: 100%
+    height: auto
+
+  // .broken-true
+  //   display: none
+
+  .product-data
+    // border-bottom: 1px solid #ccc
+
+    .title, .meta-index
+      color: inherit
+
+    .title
+      margin: 0
+
+    .meta-index
+      margin: 0
+      list-style-type: none
+
+      li
+        // margin: 0 10px 0 0
+        // +inline-block()
+        // margin: 0 0 10px
+        display: block
+        line-height: 135%
+
+        &.hide
+          display: none
+
+  .product-help
+    background-color: #f5f5f5
+    color: #444
+
+    h6, ul, li, a
+      margin: 0
+      color: inherit
+      font-weight: 500
+
+    .help-index
+      margin: 10px 0 0
+      list-style-type: none
+      font-size: rem-calc(14px)
+
+    .call
+
+    .email
+      text-decoration: underline
+
+  .product-view-toggle
+    padding: 60px 0
+    +pie-clearfix
+
+    .button
+      width: 50%
+      margin: 0 auto
+      // float: left
+
+.header-controls
+  // max-width: 315px
+  // margin: 0 auto
+  // padding: 0 0 10px
+
+  // @media #{$large-up}
+  //   max-width: 500px
+
+  +pie-clearfix
+
+  .column
+    padding: 0
+
+  .tabs a:focus
+    outline: 0
+
+  .tabs .tab-title:first-of-type > a
+    border-left: 0
+    border-right: 0
+
+  .tabs .tab-title:last-of-type > a
+    border-right: 0
+
+  // tab active
+  .tabs dd.active > a,
+  .tabs .tab-title.active > a
+    color: #fff !important
+    background: $brand-grey-light
+    border-bottom-color: scale-color($brand-grey-light, $lightness: -20%)
+
+  // tab hover
+  .tabs dd > a:hover, .tabs .tab-title > a:hover
+    color: #4d442e
+    // background: scale-color(#888, $lightness: 20%)
+
+  // tab default
+  .tab-title
+    width: 50%
+
+  .tabs dd > a, .tabs .tab-title > a
+    padding: 10px 0
+    border: 1px solid #E5E5E5
+    background: rgba(238, 238, 238, 0.36)
+    border-top: 0
+    font-size: 14px
+    font-weight: 500
+    font-family: $font-stack-ui
+    color: $brand-grey-light
+    text-align: center
+    +transition(all, 0.125s, ease-in-out)
+
+.tabs-content
+  overflow: scroll
+
+.tabs-content > .content
+  padding: 0
+
+
+// order view
+#panel_order
+  padding: 0 $column-gutter/2
+  $stepSpacing: rem-calc(15px)
+
+  section.profile,
+  section.order-input,
+  section.footer
+    width: 100%
+    max-width: 500px
+    margin: 0 auto
+
+    .title
+      position: relative
+      margin: 0 0 10px
+      padding-bottom: 10px
+      border-bottom: 1px solid #ddd
+
+    .step
+      margin: rem-calc(15px) 0
+
+      fieldset
+        margin: 0
+
+      &.account-info
+        border-top: 1px solid #ddd
+
+    .step > .row
+
+      margin-bottom: $stepSpacing
+
+      select, table, input.field_quantity
+        margin-bottom: 0
+
+      .fields .row
+        margin-bottom: 0
+
+      .labels label
+        font-size: rem-calc(12px)
+        font-weight: 500
+
+      .labels
+        +grid-column($columns: 4, $last_column: false, $collapse: true)
+
+      .fields
+        +grid-column($columns: 8, $last_column: true, $collapse: true)
+
+  section.profile
+    .update, .update-fields
+      display: block
+      font-size: rem-calc(12px)
+      font-family: $font-stack-ui
+      font-weight: 500
+      text-decoration: underline
+      +opacity(1)
+
+      &:hover
+        text-decoration: none
+
+    .update-fields
+      display: none
+      margin: 0
+      +opacity(0)
+
+    .account-info
+      height: 0
+      overflow: hidden
+      font-size: 12px
+
+      .row, label, input
+        font-size: inherit
+
+      &.highlightedFields
+        height: auto
+
+        .row.highlight
+          display: block
+
+        .row
+          display: none
+
+    .userinfo-data
+      .label_field_stateProv,
+      .label_field_city
+        display: none
+
+      .label_field_cityState
+        clear: left
+
+      .label_field_cityState,
+      .label_field_address1,
+      .label_field_zipPostal,
+      .label_field_name_first,
+      .label_field_name_last
+        float: left
+        margin-right: 5px
+
+      .label_field_company,
+      .label_field_phone,
+      .label_field_email
+        clear: both
+
+    .account-new
+      display: none
+
+    &.edit.new
+      .account-new
+        display: block
+
+      .update, .update-fields
+        display: none
+
+    &.edit
+      .userinfo-data
+        display: none
+        // margin-top: -999px
+
+      .update
+        display: none
+        +opacity(0)
+
+      .update-fields
+        display: block
+        +opacity(1)
+
+      .account-info
+        height: auto
+
+        .row.highlight, .row
+          display: block
+
+    &.complete-data
+      .step > .row
+
+        .labels
+          width: 100%
+
+        .fields
+          display: none
+
+
+  section.order-input
+    .question
+      min-height: rem-calc(20px)
+
+    .postfix
+      font-weight: 500px
+
+    .dyelot-table.pricing-table
+      width: 100%
+      border: 0
+      margin: 0
+
+      // table head and data
+      thead tr th, thead tr td,
+      tr th, tr td
+        font-size: 12px
+        padding: 5px 8px
+        text-align: left
+
+      // table head and footer
+      thead, thead tr th, thead tr td,
+      tfoot tr th, tfoot tr td
+        font-weight: 500
+
+
+  form#formType
+    input, input[type='text'], textarea
+      +input-placeholder
+        color: #ccc
+
+  #formType.sample
+    .row.step-order-material,
+    .row.step-dyelots
+      display: none
+
+    button.request
+      display: none
+
+  #formType.request
+    .row.step-order-sample
+      display: none
+
+    button.sample
+      display: none
+
+
+  .over-quantity,
+  .warranty
+    display: none
+
+  .warranty.active
+    display: block
+
+  .product-alert
+    margin: $stepSpacing 0 0
+    padding: rem-calc(5px) rem-calc(10px)
+    background-color: $text-light-green
+    color: #ffffff
+    font-weight: 600
+    border: 0
+    font-size: 12px
+    line-height: 180%
+
+
+  .over-quantity .product-alert
+    strong
+      display: block
+      font-weight: 500
+
+    a
+      color: inherit
+      text-decoration: underline
+      font-weight: 500
+
+  .input-toggle-index
+    +pie-clearfix
+
+    label
+      line-height: 100%
+      margin: 0
+      padding: rem-calc(12px) rem-calc(8px)
+      color: #444
+      font-weight: 500
+      font-size: rem-calc(14px)
+      font-family: $font-stack-ui
+      background: #eee
+      border-left: 4px solid scale-color($brand-grey-light, $lightness: 6%)
+      +transition(all, 0.125s, ease-in-out)
+      display: block
+
+
+      @media #{$medium-up}
+        float: left
+        width: 50%
+
+
+      &.active
+        border-left-color: #454545
+
+      &:hover
+        background: scale-color(#eee, $lightness: -6%)
+
+    input
+      margin: 0 rem-calc(10px) 0 0
+
+[data-abide]
+  .error small.error, .error span.error, span.error, small.error
+    padding: 5px 0
+    font-weight: 600
+    font-style: normal
+    line-height: 100%
+    color: #ec5a4f
+    background: transparent
+
+  .error label, .error label.error
+    color: #4d4d4d
+
+
+// detail view
+#panel_detail
+  position: relative
+
+  $slickFrame: rem-calc(20px)
+
+  &.loading .slick-build
+    visibility: hidden
+    // max-height: 100vh
+
+  &.loading .loader
+    +opacity(1)
+
+  .loader
+    width: 100%
+    height: auto
+    text-align: center
+    position: absolute
+    top: 0px
+    height: 90%
+    background: #fff
+    z-index: 1
+    +opacity(0)
+    +transition(opacity, 0.1s, ease-in-out)
+
+
+  .slick-build
+    visibility: visible
+    position: relative
+    width: 100%
+    max-width: 1600px
+    margin: 0 auto
+
+    button, .button
+      margin-bottom: 0
+
+    .frame:focus,
+    img:focus
+      outline: 0
+
+    img
+      +opacity(1)
+      +transition(opacity, 0.125s, ease-in)
+
+    &.loading
+      overflow: hidden
+
+      img
+        +opacity(0)
+
+  .frame img
+    max-height: 823px
+    margin: 0 auto
+
+
+  // .frame.plank
+  //   background-color: #ddd
+
+  $slickThumbnailSize: rem-calc(72px)
+  .slick-nav
+    // padding: 10px 5px
+    margin: 0 auto
+    // background: #000
+
+    ul.slick-dots
+      margin: 0
+      padding: 0 $column-gutter/2 10px
+      list-style-type: none
+      text-align: left
+
+    li
+      margin: 0
+      +inline-block()
+      // border-bottom: 2px solid transparent
+      // +transition(border, 0.155s, ease-in-out)
+
+    button
+      width: $slickThumbnailSize
+      height: $slickThumbnailSize
+      min-width: 45px
+      min-height: 45px
+      padding: 0
+      margin: 10px 5px 0
+      +background-size(cover)
+      text-indent: -999px
+      overflow: hidden
+
+      &:first-of-type
+        margin-left: 0
+
+    // .slick-active
+    //   border-bottom-color: $brand-grey-light
+
+  // .slider-nav
+  //   margin: 0 auto
+
+  //   .frame
+  //     padding: rem-calc(10px)
+
+  //     &:first-of-type
+  //       padding-left: 0
+
+  //     &:last-of-type
+  //       padding-right: 0
+
+
+
+
+
+// success
+#modal_success.reveal-modal,
+#modal_welcomeRadstock.reveal-modal
+  padding: 0
+
+  .alert-box
+    padding: $column-gutter
+    text-align: center
+    color: #444
+    margin: 0
+    background: #f5f5f5
+
+  .help-index
+    margin: 10px 0 0
+    list-style-type: none
+
+  li
+    margin: 10px 0
+
+  li a
+    color: #444
+
+  .icon
+    width: 25px
+    height: 25px
+    display: inline-block
+    margin-right: 8px
+    vertical-align: bottom
+    +opacity(0.75)
+    +background-size(cover)
+
+  a.call
+    .icon
+      background-image: url(../img/ic_phone_black.png)
+
+  a.email
+    .icon
+      background-image: url(../img/ic_email_black.png)
+
+    text-decoration: underline
+
+  .title
+    color: inherit
+    font-size: 20px
+    margin: rem-calc(20px) 0 rem-calc(10px)
+
+  p
+    margin: 10px 0

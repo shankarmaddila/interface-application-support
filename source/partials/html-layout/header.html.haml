@@ -1,0 +1,13 @@
+= partial 'partials/html-layout/meta'
+
+%title
+  = current_page.data.title
+
+= stylesheet_link_tag "style"
+
+- if yield_content :page_stylesheet
+  = yield_content :page_stylesheet
+
+= javascript_include_tag "head.js"
+
+= partial 'partials/html-layout/ie-head.html'

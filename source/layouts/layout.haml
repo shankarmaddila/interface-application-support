@@ -1,0 +1,27 @@
+:plain
+  <!doctype html>
+  <!--[if lt IE 7]>         <html class="no-js ie lt-ie10 lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+  <!--[if IE 7]>            <html class="no-js ie lt-ie10 lt-ie9 lt-ie8" lang="en"> <![endif]-->
+  <!--[if IE 8]>            <html class="no-js ie lt-ie10 lt-ie9" lang="en"> <![endif]-->
+  <!--[if IE 9]>            <html class="no-js ie lt-ie10" lang="en"> <![endif]-->
+  <!--[if gt IE 9]><!-->    <html class="no-js" lang="en"> <!--<![endif]-->
+
+%head
+  = partial 'partials/html-layout/header'
+
+%body{:class => page_classes}
+  :plain
+    <!--[if lte IE 9]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+  .svg-import
+    = partial 'assets/img/shapes.svg'
+
+  = partial 'partials/global_header'
+
+  %div#content{:role=>'main'}
+    = yield
+
+  = partial 'partials/global_footer'
+  = partial 'partials/html-layout/footer'

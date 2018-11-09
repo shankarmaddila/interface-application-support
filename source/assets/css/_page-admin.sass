@@ -1,0 +1,551 @@
+
+$previewTiming: 1s
+
+// admin content + gutters
+$adminControlWidth: 400px + 40
+
+body.f-topbar-fixed
+
+  .inside-fixed
+    position: relative
+    width: 100%
+    max-width: $adminControlWidth - 40
+
+body.preload
+  // display: none
+
+  #preloader, #preloader .sk-fading-circle
+    display: block
+
+  #content
+    +transition(-webkit-filter, 0.55s, ease-in-out)
+    +filter(blur(5px))
+
+#preloader
+  position: fixed
+  top: 0
+  left: 0
+  width: 100vh
+  height: 100vh
+  padding: 50%
+  z-index: 3
+  display: none
+
+  .sk-fading-circle
+    display: none
+    margin: 0
+    position: fixed
+    top: 50%
+    left: 50%
+    right: 50%
+
+
+body.admin.preview-active
+  .layout-product
+    @media #{$small-up}
+      +grid-column($columns: 12, $last_column: true, $collapse: true)
+
+  .layout-admin
+    display: none
+
+  .promotion, .promotion.un-subscribed
+    display: block !important
+
+  .layout-default
+    margin-top: $column-gutter
+
+  // header
+  .contain-to-grid
+    display: block !important
+
+  #preview
+    position: fixed
+    right: rem-calc(30px)
+    margin: 0
+    z-index: 999
+
+    .qa
+      display: block
+
+    .prod
+      display: none
+
+
+body.admin
+
+  #preview
+    width: 170px
+    position: absolute
+    right: 0
+    top: 0
+    +pie-clearfix()
+
+    .button
+      margin: 0
+      display: block
+      line-height: rem-calc(36px)
+      font-size: rem-calc(16px)
+
+    $iconDim: 18px
+    span
+      line-height: 100%
+      width: $iconDim
+      height: $iconDim
+      margin-right: 10px
+      margin-bottom: -4px
+      content: ""
+      display: inline-block
+      background: url(../img/ic_visibility_white.png) center center no-repeat
+      +background-size()
+
+    .qa
+      display: none
+
+    .prod
+      display: block
+
+  // header
+  .contain-to-grid
+    display: none
+
+  .promotion, .promotion.un-subscribed
+    display: none
+
+.layout-admin
+  width: $adminControlWidth
+  float: left
+  position: relative
+  z-index: 2
+  padding: 0
+  margin: 0
+
+  // +transition(width, $previewTiming, ease-in-out)
+
+  // .fixed-view
+  //   position: fixed
+
+  // .inside-fixed
+  //   max-width: 400px
+  //   float: right
+
+  .panel
+    min-height: 100vh
+
+    border: 0
+    +box-shadow(0px -10px 10px 3px rgba(#000, 0.15))
+    // background: linear-gradient(rgba(#f5f5f5, 1) 0%, rgba(#fff, 0) 100%)
+
+  .header-title
+    margin: 50px 0 0
+
+  .logged-in
+    margin: 5px 0 50px
+    font-size: rem-calc(12px)
+    font-family: $font-stack-ui
+
+    span, a
+      +inline-block()
+
+    .break
+      margin: 0 5px
+
+    a
+      color: $brand-grey-light
+
+    a:hover
+      text-decoration: underline
+
+    .f-dropdown
+      width: 100%
+      border: none
+
+      &:before,
+      &:after
+        display: none
+
+      label
+        font-size: inherit
+
+      input
+        top: initial
+        height: auto
+
+      li
+        width: 100%
+
+      a
+        font-size: rem-calc(12px)
+        color: $text-dark-blue
+
+      li:hover
+        background-color:  $text-dark-blue
+
+        a
+          color: #fff
+
+  $panelSpacing: 40px
+
+  .admin-controls
+
+    &.disable
+      .disabled
+        display: block
+
+      .upload, .revision
+        +opacity(0.5)
+
+    .version-title
+      font-weight: 500
+      margin: rem-calc(40px) 0 0
+
+    .upload, .revision
+      position: relative
+      margin-top: $panelSpacing
+
+    .publish
+      // margin: 30px 0
+
+      .button
+        width: 100%
+        margin: 0
+        max-height: 37px
+        line-height: 37px
+        padding-top: 0
+        padding-bottom: 0
+
+    .dropzone
+      border: 1px dotted $border
+
+      .preview-title
+        color: #AFAFAF
+        font-size: rem-calc(25px)
+        margin-bottom: rem-calc(20px)
+        font-weight: 200
+        font-family: $font-stack-ui
+
+      .button-placeholder
+        display: inline-block
+        padding: 5px 10px
+        background: #999999
+        color: #eee
+        font-size: 12px
+
+      &:hover
+        background-color: rgba(#fff, 0.8)
+
+    .disabled
+      position: absolute
+      top: 0
+      left: 0
+      width: 100%
+      height: 100%
+      background-color: traparent
+      cursor: default
+      z-index: 2
+
+      display: none
+
+    .data-select select
+      margin-bottom: 0
+      border-color: $border
+
+    .instructions
+      margin: rem-calc(40px) 0 rem-calc(20px)
+      border-bottom: 1px solid #ddd
+      padding-bottom: rem-calc(20px)
+
+      p
+        margin: 0
+
+    button .has-tip
+      color: #fff
+      font-weight: normal
+
+    .alert-box
+      color: #000
+      background-color: $text-red
+      line-height: 120%
+      margin-bottom: 0
+      border-bottom: 0
+
+      h6
+        color: inherit
+
+    code
+      display: none
+      max-height: 200px
+      overflow: scroll
+      background-color: transparent
+      border: 0
+
+      &.active
+        display: block
+
+      .entry
+        margin: 0 0 10px
+        padding: 0
+        font-family: $font-stack-ui
+        font-size: rem-calc(14px)
+
+      span
+        +inline-block()
+        line-height: 100%
+
+      span.t
+        font-size: 11px
+        padding-right: 8px
+
+    .data-status
+      margin-top: $panelSpacing
+
+      h6
+        margin: 0
+
+    .product-errors
+      display: none
+      margin-top: $panelSpacing
+
+      &.active
+        display: block
+
+      p
+        margin: 0 0 10px
+        font-size: 14px
+
+      .controls
+        margin: 0
+        padding: 10px 0
+        border-top: 1px solid $border
+
+        .button
+          margin: 0
+
+
+      code .entry,
+      .missed-log
+        border: 0
+        padding: 0
+
+    .production-status
+      margin: rem-calc(8px) 0 $panelSpacing
+      font-size: rem-calc(14px)
+      color: #666
+
+    .title
+      position: relative
+      margin: 0 0 10px
+      padding-bottom: 10px
+      border-bottom: 1px solid #ddd
+
+    .message
+      font-size: rem-calc(12px)
+      font-weight: 500
+
+.layout-product
+  position: relative
+  width: auto
+  padding-left: $adminControlWidth
+  // +transition(all, 1.5s, ease-in-out)
+
+  .activity-overlay
+    position: absolute
+    top: 0
+    left: $adminControlWidth
+    width: 100%
+    height: 100%
+    z-index: -1
+    background-color: rgba(#fff, 0.95)
+    +opacity(0)
+    +transition(opacity, 0.155s, ease-in-out)
+
+    .loader, .spinner
+      display: none
+
+    .loader
+      width: inherit
+      top: 40vh
+      position: fixed
+      right: 0
+
+    &.active
+      z-index: 2
+      +opacity(1)
+
+      .loader, .spinner
+        display: block
+
+  .layout-default
+    margin-top: 0
+
+  .product-offers.disable
+    max-height: 42vh
+    overflow: hidden
+
+  .figure .scene
+    display: none
+
+  .content-index.product-grid
+
+    // .product-item .controls
+    //   display: none
+
+    // .product-detail
+    //   +grid-column($columns: 8, $last_column: true, $collapse: false)
+
+    // .product-control
+    //   +grid-column($columns: 4, $last_column: true, $collapse: false)
+
+    .product-item .row
+      min-height: 100%
+
+    .all-data
+      width: 20px
+      height: 20px
+      margin-left: 5px
+      display: inline-block
+      vertical-align: top
+      +opacity(0.6)
+
+      img
+        width: 100%
+        height: auto
+        vertical-align: inherit
+
+      &:hover
+        +opacity(0.6)
+
+  .content-index.product-grid.view-qa
+
+    // .product-detail
+    //   +grid-column($columns: 12, $last_column: false, $collapse: false)
+
+    .product-control
+      display: none
+
+  .nav-item.right
+    visibility: hidden !important
+
+  // custom color tags
+  .template-panel
+
+    .select2-container
+      width: 100% !important
+
+      ul
+        font-size: 11px
+
+    .color-tag-index
+      visibility: hidden
+      height: 0
+      overflow: hidden
+
+    .color-tag-index.select2-hidden-accessible
+      visibility: visible
+
+    .select2-selection
+      line-height: 100%
+      padding: 0
+      border-radius: 0
+      border-color: #eee
+
+    .select2-container--default .select2-results>.select2-results__options
+      max-height: 100%
+
+    .select2-container--open .select2-dropdown--below
+      border-radius: 0
+      border-color: #fff
+
+    .select2-container--default .select2-selection--multiple .select2-selection__choice
+      background-color: #eee
+      border: 1px solid #ddd
+      +border-radius(0)
+
+
+body.preview-active .layout-product
+  .content-index.product-grid
+    .all-data
+      display: none
+
+    .figure .config
+      display: none
+
+    .figure .scene
+      display: block
+
+    // .product-item .controls
+    //   display: none
+
+    // .product-detail
+    //   +grid-column($columns: 8, $last_column: false, $collapse: false)
+
+    // .product-control
+    //   display: block
+    //   +grid-column($columns: 4, $last_column: true, $collapse: false)
+
+    //   .controls
+    //     display: block
+
+    .edit
+      display: none
+
+#adminFileResult
+  text-align: center
+
+  .message
+    margin: rem-calc(50px) 0
+    font-size: rem-calc(20px)
+
+  .button
+    padding: rem-calc(10px) rem-calc(40px)
+
+#signIn.reveal-modal,
+#adminLoading,
+#adminFileResult
+  width: 100%
+  height: 100%
+  padding: 0
+  position: fixed
+  top: 0
+  left: 0
+  max-width: 100%
+  max-height: 100%
+
+  .view-container
+    width: 400px
+    height: auto
+    max-width: 100%
+    max-height: 100%
+    position: absolute
+    top: 50%
+    left: 0
+    right: 0
+    +transform(translateY(-50%))
+
+  #brand_logo
+    text-align: center
+    margin: rem-calc(40px) 0 rem-calc(40px)
+
+    .sub-site
+      padding: 0
+
+  form
+    margin-bottom: rem-calc(40px)
+    label
+      font-size: rem-calc(14px)
+
+    button
+      // width: 100%
+
+#adminLoading .view-container
+  width: 80px
+  height: 80px
+  background-color: transparent
+
+  .sk-fading-circle .sk-circle:before
+    background-color: #fff
+
+body.preload .reveal-modal-bg
+  background-color: rgba(#000, 0.75)
+
+
+

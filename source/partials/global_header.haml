@@ -1,0 +1,40 @@
+#header.contain-to-grid
+  .row
+    .column.small-12
+      %nav.top-bar{"data-topbar" => "", :role => "navigation"}
+        %ul.title-area
+          %li.name
+            %h1
+              %a#brand_logo{:href => "http://interface.com"}
+                = partial 'partials/global_logo'
+
+                .sub-site
+                  Specials
+
+        .call
+          %a.tel{:href => "tel:8887237865"} 888.723.7865
+
+
+
+          / Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone
+          -# %li.toggle-topbar.menu-icon
+          -#   %a{:href => "#"}
+          -#     %span
+
+        -# %section.top-bar-section
+        -#   %ul#navigation_secondary.right
+        -#     %li.contact
+        -#       %a{:href => "http://q4-interface-refinements.azurewebsites.net/pages/contact/contact.html?URL=http%3A%2F%2Fq4-interface-refinements.azurewebsites.net%2Fpages%2Fcheckout%2Fcheckout-sample-order.html%3ForderId%3D123123"}
+        -#         -# %span.dynamic-user
+
+        -#   %ul#navigation_primary.right.bottom
+        -#     %li
+        -#       %small.dev
+        -#     %li
+        -#       %a{:href => "http://q4-interface-refinements.azurewebsites.net/pages/products/products-index.html#featured"} Products
+
+        -#     %li
+        -#       %a{:href => "/floor-design"} Design
+
+        -#     %li
+        -#       %a{:href => "http://q4-interface-refinements.azurewebsites.net/pages/about/about-index.html"} About

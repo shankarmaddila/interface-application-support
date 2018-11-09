@@ -1,0 +1,58 @@
+
+.row.small-collapse
+
+  .about
+    .about-view
+      %h1.title Carpet Specials
+      %p Browse our showcase of custom and standard running line carpet tile, often available in large lots and always at discounted prices.
+      %p Products are updated once per week. Check back regularly or sign up for notifications.
+      %p Call Interface at <a class="tel" href="tel:8887237865">888.723.7865</a> for help with ordering.
+
+
+  .action
+    .action-view
+      %h4.form-cta
+        Sign up
+        %br
+        %small Get alerts when products are updated
+
+      %h4.message.hide
+        You're signed up!
+        %br
+        %small You will recieve weekly updates on new products.
+
+      %form#subscribe.email-form{:name=>"2015FlashSale_emailSubscription", "data-abide" => "ajax"}
+        .data.hide
+          %input.guid{:name => "elqCustomerGUID", :type => "hidden", :value => ""}
+          %input.cookie{:name => "elqCookieWrite", :type => "hidden", :value => "0"}
+          %input.siteID{:name => "elqSiteId", :type => "hidden", :value => "672"}
+          %input.formName{:name => "elqFormName", :type => "hidden", :value => "2015FlashSale_emailSubscription"}
+
+        .row.collapse
+          .large-12.columns
+            .row.collapse.form-cta
+              .small-9.columns
+                %input.field-email{:name=>"emailAddress", :placeholder => "Enter your email address", :type => "email", :required=>""}
+                %small.error Please enter a valid email
+              .small-3.columns
+                %button.postfix.submit{:type => "submit"} Sign Up
+
+
+
+
+  %a#promotionDismiss.close{:href => "#"} &#215;
+
+
+
+-# .promo-img{'data-equalizer-watch'=>''}
+-#   .figure
+-#     -# %img{:src=>"http://interfaceinc.scene7.com/is/image/InterfaceInc/gallery-vertical-NF-03?hei=850&fit=vfit,1"}
+-#     -# %img{:src=>"http://interfaceinc.scene7.com/ir/render/InterfaceIncRender/us_publicspace?&resmode=sharp2&qlt=80,1&obj=main&res=45.72&sharp=1&src=is{InterfaceInc/install_05_5B_room?$tile=InterfaceInc/7798001999G15S001_custom_custom-254826-015}&wid=850"}
+
+
+-# .promo-text{'data-equalizer-watch'=>''}
+-#   .promotion-layout
+-#     .promotion
+
+
+

@@ -1,0 +1,12 @@
+%script#modal_header{:type=>"text/template"}
+  .row
+    .column.small-9
+      %h3.title {{product.title}}
+      %ul.meta-index
+        %li {{product.patternNumber}}
+        %li{:class => "{{showColorMeta}}"} {{product.colorName}} {{product.colorNumber}}
+        %li {{product.sizeLabel}}
+        %li {{product.backing}}
+        %li Total Quantity: {{dyelotTotal}} yds²
+        {{notice}}
+

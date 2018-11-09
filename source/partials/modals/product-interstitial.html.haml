@@ -1,0 +1,238 @@
+#modal_productInterstitial.reveal-modal.full{"data-options" => "close_on_background_click:true; animation:fade;", "data-reveal" => ""}
+  .view-container
+    %a.close-reveal-modal &#215;
+
+    .modal-header.column.small-12.medium-4
+      .header-product
+        .product-data
+          -# template: %script#modal_header
+
+        .product-help
+          .row
+            .column.small-12
+              %h6 Questions about this product?
+              %ul.help-index
+                %li
+                  %a.call{:href => "tel:8887237865"}
+                    888.723.7865
+
+                %li
+                  %a.email{:href => "mailto:specials@interface.com"}
+                    specials@interface.com
+
+    .modal-content.column.small-12.medium-8
+      .header-controls
+        .column.small-12
+          %ul#modalTabs.tabs{"data-tab" => ""}
+            %li.tab-title
+              %a{:href => "#panel_order"} Order
+
+            %li.tab-title.active
+              %a{:href => "#panel_detail"} Detail
+
+      .tabs-content
+        #panel_order.content
+          %form.order-form{:name=>"2015FlashSale", :action => "https://s672.t.eloqua.com/e/f2", "data-abide" => "ajax", "data-equalizer" => ""}
+            #formType.row
+              %section.order-input
+
+                .step
+
+                  .row.step-order-type
+                    .labels
+                      %label Change Order Type
+
+                    .fields
+                      .input-toggle-index
+                        %label.active
+                          %input.toggle-order.s{:type => "radio", :name => "orderType", :value => "sample", 'data-abide-ignore' =>''}
+                          Sample Request
+
+                        %label
+                          %input.toggle-order.r{:type => "radio", :name => "orderType", :value => "request", 'data-abide-ignore' =>''}
+                          Material Request
+
+                  .row.step-dyelots
+                    .labels
+                      %label Available Dyelots
+
+                    .fields
+                      %table.dyelot-table.pricing-table
+                        %thead
+                          %tr
+                            %th Dyelot
+                            %th Available
+
+                        %tbody#dyelots
+                          -# template: modal_form_dyelots
+
+                        %tfoot
+                          %tr
+                            %td Total
+                            %td
+                              %span.dyelot-total
+
+                  .row.step-order-sample.sample
+                    .labels
+                      %label Select Sample Quantity
+
+                    .fields
+                      %select#sampleQuantity.medium{:name=>"SampleQuantityRequested"}
+                        %option{:value => "1"} 1 tile
+
+                  .row.step-order-material.order
+                    .labels
+                      %label Enter Material Request Quantity
+
+                    .fields
+                      .row.collapse
+                        .small-9.medium-10.large-10.columns
+                          %input#materialRequestQuantity.field_quantity{:name=>"QuantityRequested", :placeholder => "Enter material request quantity", :type => "text", :required=>"", :type => "number", :value=>""}
+                          %small.error Enter a numeric quantity
+                        .small-3.medium-2.large-2.columns
+                          %span.postfix
+                            yd
+                            %sup 2
+
+                      .row.collapse.over-quantity
+                        .alert-box.product-alert{"data-alert" => ""}
+                          %strong Heads Up
+                          Your requested quantity is more than the available quantity for this product.
+                          %br
+                          %a.setTotal Click here to request all available inventory.
+
+                      .row.collapse.warranty
+                        .alert-box.product-alert{"data-alert" => ""}
+                          This product is not covered by a warranty.
+
+                  .row.step-comment
+                    .labels
+                      %label Comments
+
+                    .fields
+                      %textarea.question{:placeholder => "Add Comment or Question", :name => "comments"}
+
+              %section.profile
+
+                .step
+                  %h6.title
+                    Shipping Info
+                    %a.update{:href => "/"} Update
+                    %a.update-fields{:href => "#"} Done
+
+                  .row.step-order-type
+                    .labels
+                      %label.account-new Complete Your Profile
+
+                      .account-text
+                        .userinfo-data
+
+                    .fields
+                      .account-info
+                        .row.collapse.row-name
+                          %label.label-name Name
+                          .small-12.medium-6.columns
+                            %input.field_name_first{:name=>"firstName", :placeholder => "First Name", :type => "text", :required=>""}
+                            %small.error
+                              -# Enter a first name
+                              Required
+
+                          .small-12.medium-6.columns
+                            %input.field_name_last{:name=>"lastName", :placeholder => "Last Name", :type => "text", :required=>""}
+                            %small.error
+                              -# Enter a last name
+                              Required
+
+                        .row.collapse.row-company
+                          %label Company
+                          %input.field_company{:name=>"company", :placeholder => "Company", :type => "text", :required=>""}
+                          %small.error
+                            -# Please enter your company
+                            Required
+
+                        .row.collapse.row-email
+                          %label Email
+                          %input.field_email{:name=>"emailAddress", :placeholder => "Email Address", :type => "email", :required=>""}
+                          %small.error
+                            -# Enter a valid email address
+                            Required
+
+                        .row.collapse.row-phone
+                          %label Business Phone
+                          %input.field_phone{:name=>"busPhone", :placeholder => "Business Phone", :type => "text", :required=>""}
+                          %small.error
+                            -# Please enter a phone number
+                            Required
+
+                        .row.collapse.row-address1
+                          %label Address
+                          %input.field_address1{:name=>"address1", :placeholder => "Address", :type => "text", :required=>""}
+                          %small.error
+                            -# Please enter your address
+                            Required
+
+                        .row.collapse.row-address2
+                          .small-12.medium-6.columns
+                            %label City
+                            %input.field_city{:name=>"city", :placeholder => "City", :type => "text", :required=>""}
+                            %small.error
+                              -# Please enter your city
+                              Required
+
+                          .small-12.medium-3.columns
+                            %label State
+                            %input.field_stateProv{:name=>"stateProv", :placeholder => "State", :type => "text", :required=>""}
+                            %small.error
+                              -# Please enter your state/province
+                              Required
+
+                          .small-12.medium-3.columns
+                            %label Zip
+                            %input.field_zipPostal{:name=>"zipPostal", :placeholder => "Zip", :type => "text", :required=>""}
+                            %small.error
+                              -# Please enter your zip/postal code
+                              Required
+
+              %section.footer
+                .step
+                  %button.button.expand.request{:type => "submit"} Submit Request
+                  %button.button.expand.sample{:type => "submit"} Request Sample
+
+                .submit-loading.hide
+                  = partial 'partials/html-components/loader'
+
+                #data
+                  .eloqua
+                    %input{:name => "elqCustomerGUID", :type => "hidden", :value => ""}
+                    %input{:name => "elqCookieWrite", :type => "hidden", :value => "0"}
+                    %input{:name => "elqFormName", :type => "hidden", :value => "2015FlashSale"}
+                    %input{:name => "elqSiteId", :type => "hidden", :value => "672"}
+
+                  .attributes
+                    -# template: %script#modal_header
+
+        #panel_detail.content
+          = partial 'partials/html-components/loader'
+
+          .slick-build
+            .frame
+              %img.tile{:src => ""}
+            .frame
+              %img.config{:src => ""}
+            .frame
+              %img.scene{:src => ""}
+
+          .slick-nav
+            %button.hide
+            -# %a.arrow.back.button{:href => "/"} &#10094;
+            -# %a.arrow.forward.button{:href => "/"} &#10095;
+
+
+
+
+
+
+
+-# {"data-equalizer" => "", "data-equalizer-mq" => "medium-up"}
+-# {"data-equalizer-watch" => ""}
+-# {"data-equalizer-watch" => ""}

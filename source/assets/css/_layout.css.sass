@@ -1,0 +1,251 @@
+html
+  @media #{$small-up}
+    font-size: 11px
+
+  @media #{$medium-up}
+    font-size: 14px
+
+  @media #{$large-up}
+    font-size: 16px
+
+  button, .button
+    font-family: $font-stack-ui
+
+// extends
+%size-fullwidth
+  width: 100%
+  height: auto
+
+%center-vertical
+  position: absolute
+  top: 50%
+  +transform(translateY(-50%))
+
+// globally used styles
+.center
+  display: table
+  width: 100%
+  height: 100%
+
+  .center-y
+    display: table-cell
+    width: 100%
+    vertical-align: middle
+
+.svg-import
+  display: none
+
+svg
+  width: inherit
+  height: inherit
+
+svg,
+svg g
+  stroke: inherit
+  fill: inherit
+
+  circle
+    stroke: inherit
+    fill: inherit
+
+  polyline
+    stroke: inherit
+    fill: inherit
+
+$svg-circle-arrow-w: 46px
+$svg-circle-arrow-h: 46px
+
+.icon-circle-arrow
+  width: $svg-circle-arrow-w
+  height: $svg-circle-arrow-h
+  // fill: transparent
+  // stroke: #ccc
+  +transition(stroke, 0.88s, ease-in-out)
+
+.icon-search
+  background: url("//interfaceinc.scene7.com/is/image/InterfaceInc/search-icon?wid=17") no-repeat center center
+  width: 18px
+  height: 18px
+  +opacity(1)
+
+  &:hover
+    +opacity(0.8)
+
+// .material-icons
+//   width: 18px
+//   height: 18px
+//   display: block
+//   position: absolute
+//   right: 0
+//   top: 50%
+//   +transform(translateY(-50%))
+//   +opacity(0.5)
+
+// cta
+$lightBorder: $brand-grey-light
+$lightBackground: rgba(#fff, 0.5)
+$lightText: #f5f5f5
+
+$darkBorder: scale-lightness($brand-grey-dark, -80%)
+$darkBackground: rgba(#000, 0.65)
+$darkText: #444
+
+%ctaSecondaryToBlack
+  background-color: $brand-grey-light
+  font-size: 14px
+  font-family: $font-stack-ui
+  text-align: center
+  font-weight: 500
+  +transition(background-color, 0.155s, ease-in-out)
+
+  &:hover
+    background-color: #464646
+
+%ctaDarkBackground
+  color: $lightText
+  border: 1px solid $brand-grey-dark
+  background: $darkBackground
+
+  &:hover
+    color: $lightText
+    border: 1px solid $darkBorder
+
+%ctaLightBackground
+  color: $text
+  border: 1px solid scale-lightness($lightText, -20%)
+
+
+  &:hover
+    color: #fff
+    background: rgba($text-dark-blue, 1)
+    border: 1px solid scale-lightness($lightText, -40%)
+
+.cta-index
+  &.dtl .cta
+    @extend %ctaDarkBackground
+
+  &.ltd .cta
+    @extend %ctaLightBackground
+
+  &.align-center
+    text-align: center
+
+  &.align-left
+    text-align: left
+
+  &.align-right
+    text-align: right
+
+  &.single
+    margin-left: 0
+    margin-right: 0
+
+.cta
+  display: inline-block
+  color: $text
+  background: transparent
+  text-align: center !important
+  +transition(all, 0.155s, ease-in-out)
+
+  &:hover
+    color: #000
+    border: 1px solid #000
+    background: #fff
+
+  &.text
+    padding: rem-calc(12px) rem-calc(30px)
+    font-size: rem-calc(16px)
+    border: 1px solid $brand-grey-light
+    // +border-radius(3px)
+
+// layouts
+.layout-full
+  width: 100%
+  position: relative
+  clear: both
+  background: transparent
+
+  .title
+    margin: 0 0 rem-calc(30)
+
+  .sub-title
+    margin: 0
+
+  .overlay
+    position: absolute
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+
+  .banner-img
+    @extend %size-fullwidth
+
+  &.primary
+    .title, .sub-title
+      width: 100%
+      text-align: center
+
+  &.secondary
+    .title, .sub-title
+      width: 100%
+      text-align: left
+
+.layout-default
+  // border: 1px solid #eee
+
+  @media #{$small-up}
+    // padding: rem-calc(50) 0 rem-calc(36)
+    padding: rem-calc(36) 0 rem-calc(36)
+
+  @media #{$large-up}
+    // padding: rem-calc(160) 0 rem-calc(120)
+    padding: rem-calc(60) 0 rem-calc(60)
+
+  .cta-index
+    text-align: center
+
+  &.content-title
+    @media #{$small-up}
+      padding-bottom: rem-calc(30)
+
+// media query dev debugging
+.mq-dev:after
+  content: "Default"
+  display: block
+  width: 100%
+
+  @media #{$small-up-portrait}
+    content: "small up portrait"
+
+  @media #{$small-up-landscape}
+    content: "small up landscape"
+
+  @media #{$med-up-portrait}
+    content: "medium up portrait"
+
+  @media #{$med-up-landscape}
+    content: "medium up landscape"
+
+// @media #{$small-up}
+
+// @media #{$small-only}
+
+// @media #{$medium-up}
+
+// @media #{$medium-only}
+
+// @media #{$large-up}
+
+// @media #{$large-only}
+
+// @media #{$xlarge-up}
+
+// @media #{$xlarge-only}
+
+// @media #{$xxlarge-up}
+
+// @media #{$xxlarge-only}
+
+// +grid-column($columns: 12, $last_column: true, $collapse: false)
+// +block-grid($per_row: 3, $spacing: $block-grid-default-spacing, $base_style: true)

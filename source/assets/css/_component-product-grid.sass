@@ -1,0 +1,413 @@
+
+// html layers
+// %section.layout-default.row.product-offers
+//   .content.columns.large-12
+//     %ul#productScroll.row.content-index.product-grid.view-scene
+
+#productGridTop .loader
+  overflow: hidden
+  height: 120px
+  +transition(height, 0.50s)
+  +transition-timing-function(cubic-bezier(.32, 1, .53, .8))
+
+.product-offers
+  position: relative
+  padding-top: $column-gutter
+  background: #fff
+  z-index: 1
+  min-height: 100vh
+  // +opacity(0)
+  // +transition(opacity, 0.50s)
+  // +transition-timing-function(cubic-bezier(.32, 1, .53, .8))
+
+  .content
+    margin-top: $column-gutter
+
+  &.ready
+    // +opacity(1)
+
+    ul.content-index img.load
+      display: none
+
+ul.content-index
+  margin: 0
+  list-style-type: none
+  +pie-clearfix
+
+  &.filter-active
+
+    .product-item
+      display: none
+
+    .product-item.filter-select
+      display: block
+
+%active-view-image
+  position: relative
+  top: initial
+  left: initial
+  z-index: 1
+  +opacity(1)
+
+%inactive-view-image
+  position: absolute
+  top: 0
+  left: 0
+  z-index: 1
+  +opacity(0)
+
+.content-index.product-grid
+  list-style-type: none
+
+  .product-item
+    position: relative
+
+    @media #{$small-up-portrait}
+      +grid-column($columns: 6)
+
+    @media #{$small-up-landscape}
+      +grid-column($columns: 4)
+
+    @media #{$med-up-portrait}
+      +grid-column($columns: 6)
+
+    @media #{$med-up-landscape}
+      +grid-column($columns: 4)
+
+    padding-bottom: rem-calc(30px)
+
+  // .product-item .row
+  //   min-height: rem-calc(64px)
+
+  .product-detail, .product-control, .controls, .controls a
+    min-height: inherit
+
+  .product-detail
+    width: 100%
+    clear: both
+
+  .product-control
+    width: 100%
+
+  $innerPadding: rem-calc(10px)
+  $heightPadding: rem-calc(20px)
+
+  @media #{$small-up}
+    .title
+      padding: 10px $innerPadding 5px
+
+    .data
+      padding: 0 $innerPadding 5px
+
+    .controls
+      padding: 0 $innerPadding 10px
+      text-align: left
+
+      .button
+        width: 100%
+        max-width: 48%
+
+    .product-detail
+      +grid-column($columns: 12)
+
+    .product-control
+      +grid-column($columns: 12)
+
+  @media #{$small-up-landscape}
+    .product-detail
+      +grid-column($columns: 6)
+
+    .product-control
+      +grid-column($columns: 6)
+
+    .controls .button
+      width: 100%
+      max-width: 48%
+
+  @media #{$medium-up}
+    .product-detail
+      padding-right: 5px
+
+    .product-control
+      padding-left: 0
+
+    .controls .button
+      width: auto
+
+  // @media #{$small-up-portrait}
+  //   .product-detail
+  //     +grid-column($columns: 12)
+
+  //   .product-control
+  //     +grid-column($columns: 12)
+
+  // @media #{$small-up-landscape}
+  //   .product-detail
+  //     +grid-column($columns: 6)
+
+  //   .product-control
+  //     +grid-column($columns: 6)
+
+  // @media #{$med-up-portrait}
+  //   .product-detail
+  //     +grid-column($columns: 6)
+
+  //   .product-control
+  //     +grid-column($columns: 6)
+
+  @media #{$large-up}
+    .product-detail
+      +grid-column($columns: 6)
+
+
+    .product-control
+      +grid-column($columns: 6)
+
+
+    .title
+      padding: $heightPadding $innerPadding 6px $innerPadding
+
+    .data
+      padding: 0 0 $heightPadding $innerPadding
+
+    .controls
+      padding: 0 $innerPadding $heightPadding 0
+      text-align: right
+
+  &.view-tile img.tile,
+  &.view-config img.config,
+  &.view-scene img.scene
+    @extend %active-view-image
+
+  // toggle controls
+  // .product-item
+  //   position: relative
+
+  //   .controls
+  //     margin-bottom: -45px
+  //     +transition(margin, 0.125s, ease-in-out)
+
+  //   &:hover
+  //     .controls
+  //       margin-bottom: 0
+
+  sup
+    font-weight: 500
+    font-size: 10px
+
+  .figure
+    position: relative
+    +transition(all, 0.155s, ease-in-out)
+
+    @media #{$medium-up}
+      min-height: rem-calc(300px)
+
+    &:hover
+      .icon-detail
+        +opacity(1)
+
+      img
+        +filter(brightness(0.9))
+
+    img
+      width: 100%
+      height: auto
+      cursor: pointer
+      +filter(brightness(1))
+      +transition(all, 0.125s, ease-in-out)
+      @extend %inactive-view-image
+
+    img.load
+      @extend %active-view-image
+
+    // .meta
+    //   position: absolute
+    //   top: 0
+    //   left: 0
+    //   width: 50%
+    //   height: 100%
+
+    //   dl
+    //     margin: 0
+    //     padding: 0
+
+    //   dt, dd
+    //     display: inline-block
+    //     width: 48%
+    //     margin-bottom: 10px
+    //     font-size: 12px
+    //     color: #fff
+
+  .slide-panel
+    width: 100%
+    height: auto
+    position: relative
+    // position: absolute
+    // bottom: 0
+    overflow: hidden
+    z-index: 1
+    background-color: #f5f5f5
+
+
+
+  .data
+    width: 100%
+    position: relative
+
+    &.badge-active-false .badge
+      display: none
+
+  .title, .title-color, .total
+    margin: 0
+    line-height: 140%
+    text-overflow: ellipsis
+    white-space: nowrap
+    overflow: hidden
+
+  .title
+    font-size: rem-calc(14px)
+    font-weight: 400
+
+  .title-color
+    line-height: 100%
+
+  .title-color, .total
+    color: #807761
+    font-size: rem-calc(12px)
+    font-weight: 500
+
+  .meta
+    margin: 0 0 10px
+    list-style-type: none
+    line-height: 100%
+    font-size: rem-calc(11px)
+    font-weight: bold
+
+  .badge
+    display: none
+    position: absolute
+    top: 0
+    right: 0
+    padding: 5px 10px
+    background: #444
+    color: #fff
+    font-size: rem-calc(10px)
+    text-transform: uppercase
+
+  .controls
+    width: 100%
+    height: 100%
+    position: relative
+    margin: 0
+    overflow: hidden
+    +pie-clearfix
+
+    .button
+      margin: 0
+      padding: rem-calc(10px)
+      min-height: 100%
+      font-weight: 500
+
+  .icon-detail
+    padding: 0
+    line-height: 100%
+    position: absolute
+    top: 5px
+    right: 5px
+    z-index: 1
+    +transition(opacity, 0.155s, ease-in-out)
+    +opacity(0)
+
+    .material-icons
+      font-size: 36px
+      color: #fff
+
+  .status
+    position: absolute
+    top: 0
+    right: 0
+    width: 100%
+    padding: 10px 26px
+    z-index: 0
+
+    .label
+      display: none
+      width: rem-calc(122px)
+      padding: 5px 10px
+      margin-bottom: 5px
+      background: #444
+      color: #fff
+      font-weight: 500
+      font-size: rem-calc(12px)
+      text-align: left
+      +opacity(0)
+      +transition(opacity, 0.125s, ease-in-out)
+
+    .notice
+      display: none
+
+    &.active-s
+      z-index: 1
+
+      .sample
+        display: block
+        +opacity(1)
+
+    &.active-o
+      z-index: 1
+
+      .request
+        display: block
+        +opacity(1)
+
+  .edit
+    // padding-top: 10px
+    background-color: #f5f5f5
+
+    .inside-row
+      margin: 0
+
+    .color-index
+      width: 100%
+      margin: 0 0 15px
+      list-style-type: none
+
+    input
+      display: block
+      max-height: 33px
+      margin: 0
+      padding: 0 10px
+      line-height: 33px
+
+    .title
+      line-height: 33px
+      max-height: 33px
+      padding: 0 10px
+      font-size: 14px
+      border: 1px solid $border
+
+    .button
+      display: block
+      width: 100%
+      margin: 0
+
+
+  .product-item.request
+    .status
+      z-index: 1
+
+      .request
+        +opacity(1)
+
+  .product-item.sample
+    .status
+      z-index: 1
+
+      .sample
+        +opacity(1)
+
+
+
+
+
+

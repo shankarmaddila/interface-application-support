@@ -1,0 +1,313 @@
+// header
+
+// height from top of screen to start of logo
+// this will need to be adjusted based on svg size
+$offset-logo-height: 55px
+
+// height from top screen to align top of prime nav with bottom of logo
+// this will need to be adjusted based on font size
+$offset-prime-nav: rem-calc(59px)
+
+
+// reset
+.top-bar-section ul li:hover:not(.has-form) > a
+  color: $text-dark-blue
+
+.contain-to-grid
+  +box-shadow(0px -12px 34px 10px rgba(#000, 0.3))
+  position: relative
+  z-index: 2
+
+  .top-bar
+    padding-left: $column-gutter
+    padding-right: $column-gutter
+    overflow: hidden
+
+  @media #{$medium-up}
+    .top-bar
+      max-width: 960px
+      padding-left: 0
+      padding-right: 0
+
+  .call
+    position: absolute
+    top: 50%
+    right: 0
+    +transform(translateY(-50%))
+
+    .tel
+      padding-right: $column-gutter
+
+      &:hover
+        text-decoration: underline
+
+    @media #{$medium-up}
+      .tel
+        padding-right: 0
+        margin-bottom: rem-calc(-40px)
+        display: block
+
+.title-area
+  line-height: 100%
+  height: auto
+  display: block
+
+  .name, h1, a, svg
+    line-height: inherit
+    height: inherit
+    display: inherit
+
+// product filter topbar should not effect the body
+@media #{$small-up}
+  .f-topbar-fixed
+    padding: 0 !important
+
+@media #{$medium-up}
+
+  // Change the Foundation settings as well - see _settings.scss
+  // $topbar-height: rem-calc(104);
+
+  .top-bar, .title-area
+    max-height: 104px
+
+// .top-bar .name h1 a
+
+#brand_logo
+  width: auto
+  display: block
+  padding: 0
+  svg
+    fill: $text
+
+  @media #{$small-up}
+    margin-top: 0
+    background-position-y: center
+    svg
+      width: 170px
+      height: 35px
+      vertical-align: middle
+
+    img
+      width: 80px
+
+    .sub-site
+      display: inline-block
+      vertical-align: middle
+      margin-top: 0
+
+  @media #{$small-up-landscape}
+    img
+      width: 130px
+
+  @media #{$medium-up}
+    min-height: 35px
+    margin-top: 9px
+    background-position-y: $offset-logo-height
+
+    svg
+      width: inherit
+      height: inherit
+
+    img
+      width: 170px
+
+    // .sub-site
+    //   position: absolute
+    //   top: rem-calc(48px)
+    //   right: rem-calc(-95px)
+    //   vertical-align: bottom
+
+  @media #{$large-up}
+    .sub-site
+      margin-top: 4px
+
+  .sub-site
+    // height: rem-calc(35px)
+    // line-height: rem-calc(35px)
+    padding-left: rem-calc(12px)
+    // border-left: 2px solid #d4d1cc
+    font-weight: 200
+    // font-size: rem-calc(20px)
+    font-size: rem-calc(26px)
+    color: $brand-grey-light
+
+#navigation_secondary
+  @media #{$medium-up}
+    position: absolute
+    top: 0
+    right: 0
+    font-size: rem-calc(11)
+
+    a
+      text-transform: uppercase
+      color: $text-alt
+      margin-top: 5px
+      &:hover
+        color: $text-alt-hover
+
+    > li > a
+      padding: 16px 18px !important
+
+    > li:last-of-type > a
+      padding-right: 0 !important
+
+#navigation_primary
+  // @media #{$small-up}
+  //   margin-top: 40px
+
+  @media #{$medium-up}
+    margin-top: $offset-prime-nav
+    font-size: rem-calc(18)
+
+    a
+      padding: 0 rem-calc(20px)
+
+
+    .trigger-search
+      padding-left: 0
+
+  // @media #{$large-up}
+  //   margin-top: $offset-prime-nav
+
+#navigation_secondary,
+#navigation_primary
+  .cart > a
+    color: $text-red
+    +transition(all,0.88s,ease-in-out)
+
+  .cart a.active-count:hover
+    color: scale-lightness($text-red, -20%)
+
+  .cart .icon
+    background-image: url("//interfaceinc.scene7.com/is/image/InterfaceInc/sprites?wid=200&fmt=png-alpha")
+    background-repeat: no-repeat
+    display: inline-block
+    vertical-align: middle
+    overflow: hidden
+    text-align: left
+    text-indent: -9999px
+
+  .has-count
+    .counter:before
+      content: '('
+
+    .counter:after
+      content: ')'
+
+    .counter, .active-count
+      color: $text-red
+
+  .has-count + .dropdown
+    .active-count
+      color: $text-red
+
+    .counter.active:after
+      content: ")"
+
+    .counter.active:before
+      content: "("
+
+  .link-material, .link-sample, .link-hold
+    background-image: url('//interfaceinc.scene7.com/is/content/InterfaceInc/loading')
+    background-repeat: no-repeat
+    background-position: center center
+    +background-size(15%)
+
+  .cart.populated .dropdown
+    .link-material, .link-sample, .link-hold
+      background: none
+
+  .dropdown
+    border-top: 1px solid rgba(#000, 0.1)
+    background: rgba(#fff, 0.95)
+    +box-shadow(0px 4px 10px 1px rgba(#000, 0.2))
+    +transition(all,0.88s,ease-in-out)
+
+    .icon
+      margin: 0
+      background-position: -48px 0px
+      height: 24px
+      width: 24px
+      +opacity(0.8)
+      display: none
+
+  .has-dropdown:hover  > a:after
+    right: 2px
+    border-color: transparent rgba(77, 68, 46, 0.4) transparent transparent
+
+  @media #{$small-up}
+    a
+      text-align: center
+      border-bottom: 1px solid #eee
+
+  @media #{$medium-up}
+    .has-dropdown
+      background: #fff
+
+      > a:after
+        margin: 0
+        top: 45%
+        +transition(border-color, 0.125s, ease-in-out)
+
+    li, a, .dropdown
+      line-height: 100%
+      font-size: inherit
+      background: inherit
+
+    li:last-of-type a
+      padding-right: 0
+
+    a
+      text-align: left
+      border-bottom: none
+      +transition(color, 0.125s, ease-in-out)
+
+    .dropdown
+      width: auto
+      left: -50%
+      right: -50%
+
+      li a
+        text-align: center
+        border-bottom: 1px solid #eee
+        padding: rem-calc(15px) 0
+        margin: 0 rem-calc(10px)
+        width: auto
+        background: inherit
+        // white-space: pre-line
+        line-height: 140%
+        text-transform: capitalize
+
+
+    .dropdown li a:hover
+      background: rgba(#fff,0.85)
+
+    .cart .dropdown
+      li a
+        +transition(none)
+
+      li a:hover
+        background: initial
+
+    .cart.populated .dropdown
+      li a
+        +transition(color, 0.125s, ease-in-out)
+
+      li a:hover
+        background: rgba(#fff,0.85)
+
+.top-bar .toggle-topbar.menu-icon
+  margin-top: -11px
+
+.top-bar .toggle-topbar.menu-icon a
+  padding-right: 0
+
+.top-bar .toggle-topbar.menu-icon a span:after
+  right: 0
+
+
+.nav-item.account.logged-out
+  // display: none
+
+.nav-item.account.logged-in
+  display: none

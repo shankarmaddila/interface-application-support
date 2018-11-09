@@ -1,0 +1,69 @@
+%script#product-grid{:type=>"text/template"}
+  .figure
+    %img.scene.toggle{:src => "{{responsiveSize.scene}}", :href => "#panel_detail", "data-action" => "detail", "data-id" => "{{modelID}}"}
+    %a.toggle.icon-detail{:href => "#panel_detail", "data-action" => "detail"}
+      %i.material-icons zoom_in
+
+    -# .meta
+    -#   %dl
+    -#     %dt Pattern Number
+    -#     %dd {{product.patternNumber}}
+
+    -#     %dt Color Number
+    -#     %dd {{product.colorNumber}}
+
+  .slide-panel
+    .row
+      .column.large-12.toggle{:href => "#panel_detail", "data-action" => "detail", "data-id" => "{{modelID}}"}
+        %h6.title
+          -# Warranty: {{product.warranty}}
+          {{product.name}} {{product.colorMeta}}
+
+      .product-detail.toggle{:href => "#panel_detail", "data-action" => "detail", "data-id" => "{{modelID}}"}
+        .data{:class => "badge-active-{{badgeActive}}"}
+          %h5.title-color
+            {{product.colorName}} {{product.colorNumber}}
+
+          %h5.total
+            Quantity: {{dyelotTotal}} yds <sup>2</sup>
+
+      .product-control
+        .controls
+          %a.button.secondary.tiny.toggle{:href => "#panel_order", "data-action" => "request"} Order
+          %a.button.secondary.tiny.toggle{:href => "#panel_order", "data-action" => "sample"} Sample
+
+
+  .status
+    %span.label.secondary.request Requested
+    %span.label.secondary.sample Sample Ordered
+    %span.label.secondary.notice This product is not covered by a 15-year warranty
+
+
+%script#product-grid-custom-color-panel{:type=>"text/template"}
+  .custom-color-view
+    -# ul template goes here
+    %ul.color-index
+
+  .control-add.inside-row.row.small-collapse
+    .column.small-12
+
+      %select.color-tag-index
+
+    -# .column.small-10
+    -#   %input.new-custom-color{:type => "text", :placeholder => "Add a color name"}
+    -# .control.column.small-2
+    -#   %a.button.tiny.add-new-custom-color{:href => "/"} &#43;
+
+
+%script#product-grid-custom-color{:type=>"text/template"}
+  %li.custom-color.inside-row.row.small-collapse{:style => "background-color:{{name}};"}
+    .column.small-10
+      .title {{name}}
+
+    .control.column.small-2
+      %a.button.tiny.remove{:href => "{{id}}", :data => {:name => "{{name}}"}} &#215;
+
+
+
+%script#product-grid-custom-color-option{:type=>"text/template"}
+  %option {{name}}

@@ -1,0 +1,277 @@
+
+// hide on mobile for now - needs refinement
+.touch
+  .toolbar
+    display: none
+
+  .product-offers .content
+    margin-top: 0
+.ipad
+  .toolbar
+    display: block
+
+.toolbar
+  @media #{$small-only}
+    display: none
+
+    .product-offers .content
+      margin-top: 0
+
+.toolbar
+  +opacity(0)
+  +transition(opacity, 0.155s, ease-in-out)
+
+.product-offers.ready .toolbar
+  +opacity(1)
+
+.toolbar #productFilter
+
+  // reset - foundation overrides
+  max-height: 100%
+  margin: 0 auto
+  padding-left: 0
+  padding-right: 0
+
+  background: #eee
+  +pie-clearfix
+
+  .has-form, ul li
+    background-color: inherit
+
+  .top-bar-section, ul, ul li, .column, .row,
+  .has-form > .button, .has-form > button,
+  .top-bar-section li:not(.has-form) a:not(.button)
+    height: inherit
+    line-height: inherit
+    font-family: 'Roboto', sans-serif
+
+  input, select, .button, button,
+    position: relative
+    top: initial
+    height: inherit
+    display: inline-block
+
+  .toggle-topbar.menu-icon
+    margin-top: 0
+    line-height: 100%
+    height: auto
+    +transform(translateY(-50%))
+
+  .f-dropdown
+    width: 100%
+    border: none
+
+    &:before,
+    &:after
+      display: none
+
+    label
+      font-size: inherit
+
+    input
+      top: initial
+      height: auto
+
+    li
+      width: 100%
+
+  // reset
+
+
+
+  // theme
+  $toolbar-height-color: 60px
+  $toolbar-theme-color: #999999
+  $toolbar-theme-background: #f5f5f5
+  $toolbar-theme-border: #ccc
+  $toolbar-filter-item-width: 150px
+  $label-left-padding: rem-calc(20px)
+
+  max-width: 960px
+  height: $toolbar-height-color
+  line-height: $toolbar-height-color
+  +box-shadow($uiDropShadow)
+
+  .top-bar-section > ul > li,
+  .title-area li
+    padding-left: $label-left-padding
+    padding-right: $label-left-padding
+
+  .title-area
+    background-color: $toolbar-theme-color
+    color: #fff
+    text-align: left
+    min-width: $toolbar-filter-item-width
+
+  .top-bar-section li
+    min-width: $toolbar-filter-item-width
+    background: $toolbar-theme-background
+    border-right: 1px solid $toolbar-theme-border
+    color: $toolbar-theme-color
+    +transition(background, 0.155s, ease-in-out)
+
+  .has-form
+    position: relative
+    input[type="text"]
+      padding: rem-calc(10px)
+
+    input[type="text"]:focus
+      border-color: scale-color($toolbar-theme-background, $lightness: -3%)
+
+  .has-dropdown:hover
+    background: scale-color($toolbar-theme-background, $lightness: -3%)
+
+  // dropdown styles
+  $list-Height: 50px
+  $inputMargin: 10px
+  $searchIconDim: 18px
+
+  .dropdown-button
+    cursor: pointer
+
+  .f-dropdown
+    margin-left: -$label-left-padding
+    line-height: $list-Height
+
+    li
+      border: 0
+      border-bottom: 1px solid #eee
+
+    li:hover label
+      background-color: $text-dark-blue
+      color: #fff
+
+
+    label
+      height: inherit
+      line-height: inherit
+      padding: 0 14px
+
+    .color-tile-view input
+      top: 0
+      padding: 0
+      display: inline-block
+      margin-right: $inputMargin
+
+    #color-view-reset
+      display: none !important
+
+    .reset .reset-color-filter
+      font-size: $searchIconDim
+      margin-right: 4px
+      +inline-block()
+
+
+  #filter_warranty .reset
+    position: relative
+
+    input
+      position: absolute
+      top: 0
+      left: 0
+      width: 100%
+      height: 100%
+      visibility: hidden
+
+
+
+  @media #{$medium-only}
+    .f-dropdown.open
+      left: 0 !important
+      margin-left: 0
+
+  &.expanded
+    overflow: visible
+
+    .f-dropdown
+      width: 100% !important
+      margin-left: -8px
+
+  .reset-master
+    display: none
+
+  .reset-master li
+    min-width: auto
+    border: 0
+    background: transparent
+    padding: 0 !important
+
+    a.reset-trigger
+      color: #fff
+      @extend %ctaSecondaryToBlack
+
+      &:hover
+        color: #fff
+
+  .reset-search
+    display: block
+    @extend %center-vertical
+    right: 28px
+    font-size: $searchIconDim
+    z-index: 2
+    cursor: pointer
+    +opacity(0)
+    +transition(opactiy, 0.155s, ease-in-out)
+
+  .search-loading
+    width: $searchIconDim
+    height: $searchIconDim
+    display: block
+    margin: 0
+    padding: 0
+    position: absolute
+    top: 21px
+    right: 28px
+    z-index: 1
+
+    .loader
+      display: none
+
+    .sk-fading-circle
+      width: $searchIconDim
+      height: $searchIconDim
+      margin: 0 auto
+
+  #toolbarSearch.active + .reset-search
+    +opacity(1)
+
+  .toggle-topbar.menu-icon a span::after
+    +box-shadow(0 0 0 1px #ddd, 0 7px 0 1px #ddd, 0 14px 0 1px #ddd)
+
+  .filter-toggle
+    position: relative
+    padding-right: rem-calc(24px)
+
+    .material-icons
+      @extend %center-vertical
+      right: 0
+      +opacity(1)
+
+    .material-icons.up
+      display: none
+
+    .material-icons.down
+      display: block
+
+    &.open
+      .material-icons.up
+        display: block
+
+      .material-icons.down
+        display: none
+
+
+
+#productFilter.active-search.active-colorfamily.active-warranty,
+#productFilter.active-search.active-colorfamily,
+#productFilter.active-search.active-warranty,
+#productFilter.active-colorfamily.active-warranty
+  .reset-master
+    display: block
+
+html.ie.lt-ie10
+  #toolbarSearch
+    top: 0px !important
+
+  .reset-color-filter.material-icons
+    display: none !important

@@ -1,0 +1,163 @@
+// Footer
+$footerText: #a6a197
+
+#footer
+  background: #e2e1dd
+
+  @media #{$small-only}
+    text-align: center
+
+  ul
+    margin: 0
+
+  ul,li,a
+    color: inherit
+    font-size: inherit
+    line-height: inherit
+
+  .icon
+    height: 24px
+    width: 24px
+    background-image: url("//media.interface.com/is/image/InterfaceInc/sprites?fmt=png-alpha")
+    background-repeat: no-repeat
+    display: inline-block
+    vertical-align: middle
+    overflow: hidden
+    text-align: left
+    text-indent: -9999px
+
+
+  .facebook .icon
+    background-position: 0px -48px
+    height: 24px
+    width: 24px
+
+  .twitter .icon
+    background-position: -26px -48px
+    height: 24px
+    width: 24px
+
+  .youtube .icon
+    background-position: -48px -48px
+    height: 24px
+    width: 24px
+
+  .pinterest .icon
+    background-position: -96px -72px
+    height: 24px
+    width: 24px
+
+  .linkedin .icon
+    background-position: -96px -96px
+    height: 24px
+    width: 24px
+
+
+#footer-nav
+  color: $footerText
+  font-size: 11px
+
+  li
+    margin-right: 15px
+    +inline-block()
+
+    &:last-of-type
+      margin-right: 0
+
+#footer-copyright
+  color: $footerText
+  font-size: 10px
+  line-height: 14px
+  padding-right: 16px
+
+  a
+    margin-left: 10px
+    +inline-block()
+
+  @media #{$small-only}
+    padding: 0 rem-calc(10px)
+
+    a
+      display: block
+      margin: rem-calc(10px) 0
+
+
+#footer-social-links
+  border: 1px solid #d1d0cc
+  border-width: 0 1px
+  float: left
+  list-style: none
+  margin: 0
+  padding: 0 20px 0 5px
+  +box-sizing(border-box)
+
+  li
+    float: left
+    margin-left: 15px
+    padding: 10px 0
+
+  a
+    display: block
+    background: transparent
+    +opacity(0.5)
+    +transition(all, 150ms, ease-in-out)
+
+  a:hover
+    +opacity(1)
+
+  @media #{$small-only}
+    width: 100%
+    padding: 0
+
+    li
+      +inline-block()
+      float: none
+      // width: 24%
+
+  @media #{$medium-up}
+
+
+#footer-social-links
+  border-right: none
+
+#footer-change-country
+  display: none
+
+#footer-change-country
+  color: #4d442e
+  // display: block
+  float: left
+  padding: 10px 0 10px 30px
+  +opacity(0.5)
+  +transition(opacity, 150ms, ease-in-out)
+  +box-sizing(border-box)
+  width: 45%
+
+  .icon
+    float: left
+    background-position: -72px -48px
+    height: 24px
+    width: 24px
+    display: -moz-inline-stack
+    display: inline-block
+    vertical-align: middle
+    zoom: 1
+    margin-right: 10px
+
+  .label
+    font-size: 12px
+    font-weight: bold
+    line-height: 28px
+    background: none
+    padding: 0
+    color: $footerText
+
+  &:hover
+    +opacity(1)
+
+  @media #{$small-only}
+    width: 100%
+    padding: rem-calc(20px) 0 0
+
+    .icon
+      float: none

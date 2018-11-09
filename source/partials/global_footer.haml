@@ -1,0 +1,43 @@
+%section#footer.layout-default{:role=>"contentinfo"}
+  .container.row.small-collapse
+
+    / Primary footer content
+    #footer-primary.columns.small-12.medium-7
+      %nav#footer-nav
+        %ul
+          %li
+            = link_to 'Blog', 'blog', :class=>'blog'
+          %li
+            = link_to 'Mission Zero', 'about-mission-zero', :class=>'mission-zero'
+          %li
+            = link_to 'Careers', 'careers', :class=>'careers'
+
+      %p#footer-copyright
+        &copy; 2015 Interface, Inc. All rights reserved.
+        %a{:href => "http://interface.com/US/en-US/legaldisclaimer"} Legal Disclaimer
+        %a{:href => "http://interface.com/US/en-US/privacy-policy"} Privacy Policy
+        %br
+        Interface, Inc. is the world's largest manufacturer of commercial carpet tile and is setting the pace for development of modular carpet using materials and processes that take less from the environment.
+        %br
+        No part of this website may be reproduced or otherwise used without the express written consent of Interface, Inc.
+
+    / Secondary footer content
+    #footer-secondary.columns.small-12.medium-5
+      %ul#footer-social-links
+        %li
+          %a.facebook{:href => "http://www.facebook.com/InterfaceAmericas", :target => "_blank"}
+            %span.icon Facebook
+        %li
+          %a.twitter{:href => "https://twitter.com/Interface_NA", :target => "_blank"}
+            %span.icon Twitter
+        %li
+          %a.youtube{:href => "http://www.youtube.com/interfaceamericas", :target => "_blank"}
+            %span.icon YouTube
+        %li
+          %a.pinterest{:href => "http://pinterest.com/interfacena", :target => "_blank"}
+            %span.icon Pinterest
+        %li
+          %a.linkedin{:href => "https://www.linkedin.com/company/interface", :target => "_blank"}
+            %span.icon LinkedIn
+
+      = link_to '<span class="icon">&nbsp;</span><span class="label">Change country</span>', '/landing?r=0', :id => "footer-change-country"

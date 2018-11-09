@@ -1,0 +1,85 @@
+.toolbar.sticky
+  #productFilter.top-bar{"data-topbar" => ""}
+    %ul.title-area
+      %li.name Filter By
+
+      %li.toggle-topbar.menu-icon
+        %a{:href => "#"}
+          %span
+
+    %section.top-bar-section
+      %ul.left
+
+        -# search
+        %li.has-form
+          %input#toolbarSearch{:placeholder => "Product name", :type => "text"}
+          %i.reset-search.material-icons.md-18 cancel
+
+          .search-loading
+            = partial 'partials/html-components/loader'
+
+        -# Generic Select Dropdown
+        %li.has-dropdown
+
+          -# is_hover:true; hover_timeout:200
+          .dropdown-button.filter-toggle.filter-color-dropdown{"data-dropdown" => "color-view", "data-options" => ""}
+            %span.title Color
+            %i.material-icons.down arrow_drop_down
+            %i.material-icons.up arrow_drop_up
+
+          %ul#color-view.color-index.active.f-dropdown{"data-dropdown-content" => ""}
+
+          %ul#color-view-reset{:style => "display:none;"}
+            %li.color-tile-view-close.reset
+              %label
+                %i.reset-color-filter.material-icons.md-18 cancel
+                %span Reset
+
+
+
+        -# Generic Select Dropdown
+        / %li.has-dropdown
+        /   .dropdown-button.filter-toggle.filter-warranty-dropdown{"data-dropdown" => "filter_warranty", "data-options" => ""}
+        /     %span.title Warranty
+        /     %i.material-icons.down arrow_drop_down
+        /     %i.material-icons.up arrow_drop_up
+
+        /   %ul#filter_warranty.f-dropdown{"data-dropdown-content" => ""}
+
+        /     %li.reset
+        /       %label
+        /         %input{:name => "warantyFilterRadio", :type => "radio", :data => {:action => "reset"}}
+        /         %i.reset-color-filter.material-icons.md-18 cancel
+        /         %span Reset
+
+        /     %li
+        /       %label
+        /         %input{:name => "warantyFilterRadio", :type => "radio", :data => {:action => "yes"}}
+        /         %span Yes
+
+        /     %li
+        /       %label
+        /         %input{:name => "warantyFilterRadio", :type => "radio", :data => {:action => "no"}}
+        /         %span No
+
+      -# Top Bar Right Nav Elements
+      %ul.right.reset-master
+        %li
+          %a.reset-trigger{:href => "#"} Reset All
+
+-# .toolbar.sticky.hide
+-#   #productFilter{"data-topbar" => ""}
+
+-#     %ul.toolbar-index
+-#       %li.filter-label
+-#         Filters
+
+-#       %li.filter-color
+-#         %a.button.tiny.filter-toggle{"data-dropdown" => "color-view", "data-options" => "is_hover:true; hover_timeout:150", :href => "#"} Filter Color
+-#         %ul#color-view.color-index.active.f-dropdown{"data-dropdown-content" => ""}
+-#           %li
+-#             %a{:href => "/"} Clear All
+
+
+
+

@@ -1,0 +1,145 @@
+---
+layout: layout-admin
+title: Specials Admin
+---
+// config &wid=318&hei=318&align=-1,0&fit=crop
+// scene &wid=318&hei=318
+// tile ?wid=318&hei=318&align=-1,0&fit=crop
+
+- content_for :page_javascript do
+  = javascript_include_tag "admin.js"
+
+- content_for :page_modals do
+  = partial 'partials/modals/product-interstitial'
+  = partial 'partials/modals/product-order-success'
+  = partial 'partials/modals/admin-reload-confirmation'
+
+- content_for :page_templates do
+  = partial 'partials/templates/product-grid-colors'
+  = partial 'partials/templates/product-grid-admin'
+  = partial 'partials/templates/modal-header'
+  = partial 'partials/templates/modal-form-backend-data'
+  = partial 'partials/templates/modal-form-dyelots'
+
+
+#adminFileResult.reveal-modal{"aria-hidden" => "true", "data-reveal" => "", "data-options" => "close_on_background_click:false;close_on_esc:false;", :role => "dialog"}
+  .view-container
+    .row
+      .column.small-8.small-centered
+        %p.message
+        %a.button.tiny.post-file-action{:href => "/"} Continue
+
+#adminLoading.reveal-modal{"aria-hidden" => "true", "data-reveal" => "", "data-options" => "close_on_background_click:false;close_on_esc:false;", :role => "dialog"}
+  .view-container
+    .auth-loading
+      = partial 'partials/html-components/loader'
+
+#signIn.reveal-modal{"aria-hidden" => "true", "data-reveal" => "", "data-options" => "close_on_background_click:false;close_on_esc:false;", :role => "dialog"}
+  .view-container
+    .row
+      .column.small-8.small-centered
+        %a#brand_logo{:href => "http://interface.com"}
+          = partial 'partials/global_logo'
+          .sub-site
+            Specials
+
+        .auth-loading.hide
+          = partial 'partials/html-components/loader'
+
+        %p#formMessage
+        %form#signInForm{:name=>"adminLogin", :action => "", "data-abide" => "ajax"}
+          %label
+            %input.email{:placeholder => "Email", :required=>"", :type => "email"}
+            %small.error Enter a valid email
+          %label
+            %input.key{:placeholder => "Password", :required=>"", :type => "password"}
+            %small.error Enter a password
+
+          %button.submit.tiny{:type => "submit"} Login
+
+
+%section.layout-full.page-hero.promotion.alert-box{"data-alert" => ""}
+  = partial 'partials/html-components/promotion'
+
+.overwatch{"data-equalizer" => "panels" }
+  .layout-admin
+
+    .panel{"data-equalizer-watch" => "panels"}
+
+      .admin-controls.fixed-view
+        .inside-fixed
+          %h4.header-title
+            Specials Data Admin
+            -# %span#src-url.has-tip.tip-bottom{"aria-haspopup" => "true", "data-tooltip" => "", :title => ""}
+            -#   %small Data Source
+
+          .logged-in
+            %span.auth-user
+            %span.break &#124;
+            %a#signOut{:href => "#"} Log Out
+
+          .upload
+            .hide
+              #uploadPreview
+                .preview-title Drag files here
+                .button-placeholder Choose file to upload
+
+            %form#csv-upload.dropzone{:action => "/target"}
+
+            .disabled
+
+          .revision.row.small-collapse
+            -# %label.version-title Select Version
+            .column.small-12.medium-12.large-7
+              .data-select
+                %form
+                  %select#dataSourceSelect
+
+            .column.small-12.medium-12.large-5
+              .publish
+                %a#publishProduction.button.small.trigger-publish{"data-action" => ""} Set Production
+
+            .disabled
+
+          .production-status
+            Production is loading data from version <span class="productionVersion"></span>
+
+          .data-status.hide
+            .title Data Status
+            %code.log
+
+          .product-errors
+            .title
+              %span.count
+              Missed Products
+
+            %p.message We couldn't generate a Scene7 product image for these products based on the spreadsheet data.
+            %code.missed-log
+            .controls
+              %a.button.tiny.secondary.control-email{:href => ""} Email Part Numbers
+              %a.button.tiny.primary.small.trigger-qa{"data-action" => "qa"} Re-run Latest
+
+  .layout-product{"data-equalizer-watch" => "panels"}
+
+    -# todo: fix this so we don't duplicate bindings when toggling back and forth
+    -# #preview.hide
+    -#   %a.preview-trigger.alert.qa.button.tiny{:href => "#source=qa"}
+    -#     %span
+    -#     Back To QA
+
+    -#   %a.preview-trigger.prod.button.tiny{:href => "#source=production"}
+    -#     %span
+    -#     Production
+
+    .activity-overlay
+      = partial 'partials/html-components/loader'
+
+    %section.layout-default.row.product-offers{"data-equalizer-watch" => "panels"}
+
+      #toolbar-layout
+        -# product grid subnav
+        = partial 'partials/html-components/product-toolbar'
+
+      .content.columns.large-12
+        -# script#product-grid here
+        %ul#productScroll.row.content-index.product-grid.view-config.view-qa

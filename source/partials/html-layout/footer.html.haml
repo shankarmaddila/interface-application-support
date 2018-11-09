@@ -1,0 +1,56 @@
+/ modals
+= yield_content :page_modals
+
+/ backbone templates
+= yield_content :page_templates
+
+/ eloqua form used to populate user guid and make additional requests
+%form.eloqua-data.hide{:name=>"eloquaData"}
+  %input.guid{:name => "elqCustomerGUID", :type => "hidden", :value => ""}
+  %input.cookie{:name => "elqCookieWrite", :type => "hidden", :value => "0"}
+  %input.siteID{:name => "elqSiteId", :type => "hidden", :value => "672"}
+
+/ Avoid console errors in browsers that lack a console.
+:javascript
+  (function() {
+      var method;
+      var noop = function () {};
+      var methods = [
+          'assert', 'clear', 'count', 'debug', 'dir', 'dirxml', 'error',
+          'exception', 'group', 'groupCollapsed', 'groupEnd', 'info', 'log',
+          'markTimeline', 'profile', 'profileEnd', 'table', 'time', 'timeEnd',
+          'timeStamp', 'trace', 'warn'
+      ];
+      var length = methods.length;
+      var console = (window.console = window.console || {});
+
+      while (length--) {
+          method = methods[length];
+
+          // Only stub undefined methods.
+          if (!console[method]) {
+              console[method] = noop;
+          }
+      }
+  }());
+
+/ primary app js
+= javascript_include_tag 'application.js'
+= yield_content :page_javascript
+
+/ js for IE8
+:plain
+  <!--[if lt IE 9]>
+  <script src="/assets/ie8/ie8.js" type="text/javascript"></script>
+  <![endif]-->
+
+:plain
+  <!-- Google Tag Manager -->
+  <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-P56QN4"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-P56QN4');</script>
+  <!-- End Google Tag Manager -->
